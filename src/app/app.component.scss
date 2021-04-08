@@ -1,0 +1,31 @@
+.section{
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+}
+
+.add-task:hover{
+  cursor: pointer;
+  color: red;
+
+  .icon-plus{
+    color: white;
+    border: 1px solid red;
+    background-color: red;
+    border-radius: 10px;
+  }
+}
+
+.lbl-add-task{
+  color: lightgray;
+  font-size: 16px;
+
+  svg{
+    margin-right: 10px;
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
+}
+
+.icon-plus{
+  color: red;
+}
