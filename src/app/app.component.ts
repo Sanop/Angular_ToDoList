@@ -8,7 +8,12 @@ import {TaskService} from './service/task.service';
 })
 export class AppComponent {
 
+  addTaskLabelIsShown = true;
 
   constructor(public taskService : TaskService) {
+  }
+
+  changeVisibility() {
+    this.addTaskLabelIsShown = ! this.addTaskLabelIsShown;
   }
 }
