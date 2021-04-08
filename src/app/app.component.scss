@@ -32,6 +32,7 @@
   }
 }
 
+
 .add-task:hover{
   cursor: pointer;
   color: red;
@@ -58,4 +59,12 @@
 
 .icon-plus{
   color: red;
+}
+
+.completed{
+  text-decoration: line-through;
+  color: green;
+  svg{
+    color: black !important;
+  }
 }
