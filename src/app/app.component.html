@@ -1,31 +1,63 @@
-<h1>To-Do List</h1>
-<section>
-  <ng-container *ngFor="let task of taskService.taskList">
-    <div *ngIf="!task.completed" class="text-list" (click)="task.completed = true">
-    <span>
+<h1 class="title">To-Do List</h1>
+<h3 class="section">Not Completed Tasks</h3>
+  <section>
+    <ng-container *ngFor="let task of taskService.taskList">
+      <div *ngIf="!task.completed" class="text-list" (click)="task.completed = true">
+      <span @fadeIn><span>
       <svg><path fill="currentColor"
                  d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"></path></svg>
-    </span>{{task.text}}
-    </div>
-  </ng-container>
+    </span>{{task.text}}</span>
+      </div>
+    </ng-container>
+  </section>
   <div *ngIf="addTaskLabelIsShown" class="add-task lbl-add-task" (click)="changeVisibility()">
     <svg class="icon-plus" width="13" height="13">
       <path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z"
             fill="currentColor" fill-rule="evenodd">
       </path>
     </svg>
-    Add Task
+    Add New Task
   </div>
-</section>
-<h3 class="section">Completed Task</h3>
-<section>
-  <ng-container *ngFor="let task of taskService.taskList">
-    <div *ngIf="task.completed" class="text-list completed" (click)="task.completed=false">
-    <span>
+  <form class="example-form" *ngIf="addTaskFormIsShown" @fadeIn>
+    <mat-form-field class="example-full-width">
+      <mat-label>Enter Your New Task</mat-label>
+      <label>
+        <input matInput>
+      </label>
+    </mat-form-field>
+
+    <span class="set-priority">set priority</span>
+    <button type="button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>label_important</mat-icon>
+        <span style="color : red">Priority 1</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>label_important</mat-icon>
+        <span style="color : orangered">Priority 2</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>label_important</mat-icon>
+        <span style="color : green">Priority 3</span>
+      </button>
+    </mat-menu>
+
+    <button class="button-add-list" type="button" mat-raised-button color="primary">Add to List</button>
+    <button class="button-add-list" type="button" mat-raised-button color="warn" (click)="changeVisibility()">Cancel</button>
+  </form>
+  <h3 class="section">Completed Tasks</h3>
+  <section>
+    <ng-container *ngFor="let task of taskService.taskList">
+      <div *ngIf="task.completed" class="text-list completed" (click)="task.completed=false">
+      <span @fadeIn><span>
       <svg><path fill="currentColor"
                  d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"></path></svg>
-    </span>{{task.text}}
-    </div>
-  </ng-container>
-</section>
+    </span>{{task.text}}</span>
+      </div>
+    </ng-container>
+  </section>
 <router-outlet></router-outlet>
