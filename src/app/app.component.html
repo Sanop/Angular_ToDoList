@@ -18,35 +18,33 @@
     </svg>
     Add New Task
   </div>
-  <form class="example-form" *ngIf="addTaskFormIsShown" @fadeIn>
+  <form class="example-form" *ngIf="addTaskFormIsShown" @fadeIn autocomplete="off">
     <mat-form-field class="example-full-width">
       <mat-label>Enter Your New Task</mat-label>
       <label>
-        <input matInput>
+        <input matInput [(ngModel)]="text" [ngModelOptions]="{standalone : true}">
       </label>
     </mat-form-field>
 
-    <span class="set-priority">set priority</span>
+    <span class="set-priority" [style.color]="color">{{priority}}</span>
     <button type="button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
     </button>
-
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="changeColorAndPriority('red' , 'Priority 1')">
         <mat-icon>label_important</mat-icon>
         <span style="color : red">Priority 1</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item  (click)="changeColorAndPriority('blue', 'Priority 2')">
         <mat-icon>label_important</mat-icon>
-        <span style="color : orangered">Priority 2</span>
+        <span style="color : blue">Priority 2</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>label_important</mat-icon>
+      <button mat-menu-item (click)="changeColorAndPriority('green', 'Priority 3')">
+        <mat-icon >label_important</mat-icon>
         <span style="color : green">Priority 3</span>
       </button>
     </mat-menu>
-
-    <button class="button-add-list" type="button" mat-raised-button color="primary">Add to List</button>
+    <button class="button-add-list" type="button" mat-raised-button color="primary" (click)="addToList()">Add to List</button>
     <button class="button-add-list" type="button" mat-raised-button color="warn" (click)="changeVisibility()">Cancel</button>
   </form>
   <h3 class="section">Completed Tasks</h3>
