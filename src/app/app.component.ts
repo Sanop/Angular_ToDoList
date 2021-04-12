@@ -24,6 +24,10 @@ export class AppComponent {
   color = 'black';
   priority = 'Select Priority';
   text = '';
+
+  priority1 = Priority.PRIORITY1;
+  priority2 = Priority.PRIORITY2;
+
   constructor(public taskService : TaskService) {
   }
 
@@ -37,10 +41,9 @@ export class AppComponent {
       return Priority.PRIORITY1;
     }else if(this.priority == 'Priority 2'){
       return Priority.PRIORITY2;
-    }else if(this.priority == 'Priority 3') {
-      return Priority.PRIORITY3;
     }
-    return Priority.PRIORITY4;
+    return Priority.PRIORITY3;
+
   }
 
   changeVisibility() {

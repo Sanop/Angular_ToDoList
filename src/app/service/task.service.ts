@@ -13,6 +13,6 @@ export class TaskService {
     this.taskList.push(new Task("Develop Code",false,Priority.PRIORITY2));
     this.taskList.push(new Task("Test The App",false,Priority.PRIORITY3));
     this.taskList.push(new Task("Build For Production",false,Priority.PRIORITY3));
-    this.taskList.push(new Task("Deploy The App",false,Priority.PRIORITY4));
+    this.taskList.push(new Task("Deploy The App",false,Priority.PRIORITY3));
   }
 }
