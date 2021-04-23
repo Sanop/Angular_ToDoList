@@ -24,16 +24,20 @@ export class AppComponent {
   color = 'black';
   priority = 'Select Priority';
   text = '';
+  task = new Task("",false,Priority.PRIORITY1);
 
   priority1 = Priority.PRIORITY1;
   priority2 = Priority.PRIORITY2;
+  commonPriority = Priority.PRIORITY1;
 
   constructor(public taskService : TaskService) {
   }
 
+
   addToList(){
     this.taskService.taskList.push(new Task(this.text,false,this.selectPriority()));
     this.changeVisibility();
+    this.saveToDo();
   }
 
   selectPriority() : Priority{
@@ -54,5 +58,19 @@ export class AppComponent {
   changeColorAndPriority( newColor : string , priority : string) {
     this.color = newColor;
     this.priority = priority;
+  }
+
+  saveToDo(){
+    if(this.priority == 'Priority 1'){
+      this.commonPriority = Priority.PRIORITY1;
+    }else if(this.priority == 'Priority 2'){
+      this.commonPriority = Priority.PRIORITY2;
+    }else{
+      this.commonPriority = Priority.PRIORITY3;
+    }
+
+    this.task = new Task(this.text,false,this.commonPriority);
+    console.log(this.task);
+    this.taskService.addToDo(this.task);
   }
 }
