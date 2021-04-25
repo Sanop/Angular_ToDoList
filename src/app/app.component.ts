@@ -71,6 +71,8 @@ export class AppComponent {
 
     this.task = new Task(this.text,false,this.commonPriority);
     console.log(this.task);
-    this.taskService.addToDo(this.task);
+
+    let task = this.task;
+    this.taskService.saveToDo(task);
   }
 }
